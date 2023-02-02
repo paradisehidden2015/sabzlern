@@ -1,5 +1,6 @@
 import React from "react";
 import AboutUs from "../../Components/AboutUs/AboutUs";
+import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import LastArticles from "../../Components/LastArticles/LastArticles";
 import LastCourses from "../../Components/LastCourses/LastCourses";
@@ -17,6 +18,7 @@ export default function Index() {
       <PopularCourses />
       <PresellCourses />
       <LastArticles />
+      <Footer />
     </>
   );
 }
