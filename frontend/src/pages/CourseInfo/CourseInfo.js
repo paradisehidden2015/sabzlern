@@ -2,9 +2,9 @@ import React from "react";
 import Topbar from "./../../Components/Topbar/Topbar";
 import Navbar from "./../../Components/Navbar/Navbar";
 import Footer from "./../../Components/Footer/Footer";
-import "./CourseInfo.css";
 import Breadcrumb from "../../Components/Breadcrumb/Breadcrumb";
 import CourseDetailBox from "../../Components/CourseDetailBox/CourseDetailBox";
+import "./CourseInfo.css";
 
 export default function CourseInfo() {
   return (
@@ -68,7 +68,6 @@ export default function CourseInfo() {
           </div>
         </div>
       </section>
-
       <main className="main">
         <div className="container">
           <div className="row">
