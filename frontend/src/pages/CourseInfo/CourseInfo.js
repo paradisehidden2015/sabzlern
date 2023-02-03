@@ -4,6 +4,7 @@ import Navbar from "./../../Components/Navbar/Navbar";
 import Footer from "./../../Components/Footer/Footer";
 import Breadcrumb from "../../Components/Breadcrumb/Breadcrumb";
 import CourseDetailBox from "../../Components/CourseDetailBox/CourseDetailBox";
+import CommentsTextArea from "../../Components/CommentsTextArea/CommentsTextArea";
 import "./CourseInfo.css";
 
 export default function CourseInfo() {
@@ -366,6 +367,7 @@ export default function CourseInfo() {
                   </p>
                 </div>
                 {/* Finish Teacher Details */}
+                <CommentsTextArea />
               </div>
             </div>
             <div className="col-4">
