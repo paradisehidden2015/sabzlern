@@ -5,6 +5,7 @@ import Footer from "./../../Components/Footer/Footer";
 import { Link } from "react-router-dom";
 import Input from "./../../Components/Form/Input";
 import Button from "../../Components/Form/Button";
+import { useForm } from "../../hooks/useForm";
 import {
   requiredValidator,
   minValidator,
@@ -14,6 +15,19 @@ import {
 import "./Login.css";
 
 export default function Login() {
+  const [formState, onInputHandler] = useForm(
+    {
+      username: {
+        value: "",
+        isValid: false,
+      },
+      password: {
+        value: "",
+        isValid: false,
+      },
+    },
+    false
+  );
   const userLogin = (e) => {
     e.preventDefault();
     console.log("userLogin");
@@ -38,6 +52,7 @@ export default function Login() {
             <div className="login-form__username">
               <Input
                 className="login-form__username-input"
+                id="username"
                 type="text"
                 placeholder="نام کاربری یا آدرس ایمیل"
                 element="input"
@@ -47,12 +62,14 @@ export default function Login() {
                   maxValidator(20),
                   emailValidator(),
                 ]}
+                onInputHandler={onInputHandler}
               />
               <i className="login-form__username-icon fa fa-user"></i>
             </div>
             <div className="login-form__password">
               <Input
                 className="login-form__password-input"
+                id="password"
                 type="password"
                 placeholder="رمز عبور"
                 element="input"
@@ -61,14 +78,19 @@ export default function Login() {
                   minValidator(8),
                   maxValidator(18),
                 ]}
+                onInputHandler={onInputHandler}
               />
               <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
             <Button
-              className="login-form__btn"
+              className={`login-form__btn ${
+                formState.isFormValid
+                  ? "login-form__btn-success"
+                  : "login-form__btn-error"
+              }`}
               type="submit"
               onClick={userLogin}
-              disabled={false}
+              disabled={!formState.isFormValid}
             >
               <i className="login-form__btn-icon fas fa-sign-out-alt"></i>
               <span className="login-form__btn-text">ورود</span>
