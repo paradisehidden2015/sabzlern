@@ -1,20 +1,25 @@
-import React from "react";
-import Topbar from "./../../Components/Topbar/Topbar";
-import Navbar from "./../../Components/Navbar/Navbar";
-import Footer from "./../../Components/Footer/Footer";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import Input from "./../../Components/Form/Input";
+import Footer from "../../Components/Footer/Footer";
 import Button from "../../Components/Form/Button";
+import Input from "../../Components/Form/Input";
+import Navbar from "../../Components/Navbar/Navbar";
+import Topbar from "../../Components/Topbar/Topbar";
 import { useForm } from "../../hooks/useForm";
+import AuthContext from "../../context/authContext";
+
 import {
   requiredValidator,
   minValidator,
   maxValidator,
   emailValidator,
 } from "../../validators/rules";
+
 import "./Login.css";
 
 export default function Login() {
+  const authContext = useContext(AuthContext);
+
   const [formState, onInputHandler] = useForm(
     {
       username: {
@@ -28,14 +33,49 @@ export default function Login() {
     },
     false
   );
-  const userLogin = (e) => {
-    e.preventDefault();
-    console.log("userLogin");
+
+  const userLogin = (event) => {
+    event.preventDefault();
+
+    const userData = {
+      identifier: formState.inputs.username.value,
+      password: formState.inputs.password.value,
+    };
+
+    fetch(`http://localhost:4000/v1/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((res) => {
+        console.log(res);
+        if (!res.ok) {
+          return res.text().then((text) => {
+            throw new Error(text);
+          });
+        } else {
+          return res.json();
+        }
+      })
+      .then((result) => {
+        console.log(result);
+        authContext.login({}, result.accessToken);
+      })
+      .catch((err) => {
+        console.log(`err =>`, err);
+        alert("همچین کاربری وجود ندارد");
+      });
+
+    console.log(userData);
   };
+
   return (
     <>
       <Topbar />
       <Navbar />
+
       <section className="login-register">
         <div className="login">
           <span className="login__title">ورود به حساب کاربری</span>
@@ -59,8 +99,8 @@ export default function Login() {
                 validations={[
                   requiredValidator(),
                   minValidator(8),
-                  maxValidator(20),
-                  emailValidator(),
+                  maxValidator(25),
+                  // emailValidator(),
                 ]}
                 onInputHandler={onInputHandler}
               />
@@ -68,11 +108,11 @@ export default function Login() {
             </div>
             <div className="login-form__password">
               <Input
-                className="login-form__password-input"
+                element="input"
                 id="password"
                 type="password"
+                className="login-form__password-input"
                 placeholder="رمز عبور"
-                element="input"
                 validations={[
                   requiredValidator(),
                   minValidator(8),
@@ -80,6 +120,7 @@ export default function Login() {
                 ]}
                 onInputHandler={onInputHandler}
               />
+
               <i className="login-form__password-icon fa fa-lock-open"></i>
             </div>
             <Button
@@ -129,6 +170,7 @@ export default function Login() {
           </div>
         </div>
       </section>
+
       <Footer />
     </>
   );
