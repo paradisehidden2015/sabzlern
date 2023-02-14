@@ -7,6 +7,8 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Topbar from "../../Components/Topbar/Topbar";
 import { useForm } from "../../hooks/useForm";
 import AuthContext from "../../context/authContext";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 import {
   requiredValidator,
@@ -18,6 +20,7 @@ import {
 import "./Login.css";
 
 export default function Login() {
+  const navigate = useNavigate();
   const authContext = useContext(AuthContext);
 
   const [formState, onInputHandler] = useForm(
@@ -60,12 +63,21 @@ export default function Login() {
         }
       })
       .then((result) => {
-        console.log(result);
+        swal({
+          title: "با موفقیت لاگین شدید",
+          icon: "success",
+          buttons: "ورود به پنل",
+        }).then((value) => {
+          navigate("/");
+        });
         authContext.login({}, result.accessToken);
       })
       .catch((err) => {
-        console.log(`err =>`, err);
-        alert("همچین کاربری وجود ندارد");
+        swal({
+          title: "همچین کاربری وجود ندارد",
+          icon: "error",
+          buttons: "تلاش دوباره",
+        });
       });
 
     console.log(userData);

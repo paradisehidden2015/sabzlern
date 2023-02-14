@@ -154,3 +154,8 @@
   margin-right: 2rem;
   margin-top: 1rem;
 }
+
+.swal-footer {
+  display: flex;
+  justify-content: center;
+}
