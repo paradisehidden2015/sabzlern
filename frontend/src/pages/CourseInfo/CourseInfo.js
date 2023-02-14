@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Topbar from "./../../Components/Topbar/Topbar";
 import Navbar from "./../../Components/Navbar/Navbar";
 import Footer from "./../../Components/Footer/Footer";
@@ -6,28 +6,55 @@ import Breadcrumb from "../../Components/Breadcrumb/Breadcrumb";
 import CourseDetailBox from "../../Components/CourseDetailBox/CourseDetailBox";
 import CommentsTextArea from "../../Components/CommentsTextArea/CommentsTextArea";
 import Accordion from "react-bootstrap/Accordion";
+import { useParams } from "react-router-dom";
+
 import "./CourseInfo.css";
 
 export default function CourseInfo() {
+  const [comments, setComments] = useState([]);
+  const [sessions, setSessions] = useState([]);
+  const [courseDetails, setCourseDetails] = useState({});
+
+  const { courseName } = useParams();
+
+  useEffect(() => {
+    fetch(`http://localhost:4000/v1/courses/${courseName}`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("user")).token
+        }`,
+      },
+    })
+      .then((res) => res.json())
+      .then((courseInfo) => {
+        setComments(courseInfo.comments);
+        setSessions(courseInfo.sessions);
+        setCourseDetails(courseInfo);
+      });
+  }, []);
+
   return (
     <>
       <Topbar />
       <Navbar />
+
       <Breadcrumb
         links={[
-          { id: 1, title: "خانه", to: "/" },
+          { id: 1, title: "خانه", to: "" },
           {
             id: 2,
-            title: "آموزش برنامه نویسی فرانت اند",
-            to: "/Category-info/frontend",
+            title: "آموزش برنامه نویسی فرانت‌اند",
+            to: "category-info/frontend",
           },
           {
             id: 3,
             title: "دوره متخصص جاوا اسکریپت",
-            to: "/Course-info/js-expert",
+            to: "course-info/js-expert",
           },
         ]}
       />
+
       <section className="course-info">
         <div className="container">
           <div className="row">
@@ -35,17 +62,8 @@ export default function CourseInfo() {
               <a href="#" className="course-info__link">
                 آموزش برنامه نویسی فرانت اند
               </a>
-              <h1 className="course-info__title">
-                آموزش 20 کتابخانه جاوااسکریپت برای بازار کار
-              </h1>
-              <p className="course-info__text">
-                امروزه کتابخانه‌ها کد نویسی را خیلی آسان و لذت بخش تر کرده اند.
-                به قدری که حتی امروزه هیچ شرکت برنامه نویسی پروژه های خود را با
-                Vanilla Js پیاده سازی نمی کند و همیشه از کتابخانه ها و فریمورک
-                های موجود استفاده می کند. پس شما هم اگه میخواید یک برنامه نویس
-                عالی فرانت اند باشید، باید کتابخانه های کاربردی که در بازار کار
-                استفاده می شوند را به خوبی بلد باشید
-              </p>
+              <h1 className="course-info__title">{courseDetails.name}</h1>
+              <p className="course-info__text">{courseDetails.description}</p>
               <div className="course-info__social-media">
                 <a href="#" className="course-info__social-media-item">
                   <i className="fab fa-telegram-plane course-info__icon"></i>
@@ -70,6 +88,7 @@ export default function CourseInfo() {
           </div>
         </div>
       </section>
+
       <main className="main">
         <div className="container">
           <div className="row">
@@ -84,7 +103,7 @@ export default function CourseInfo() {
                     />
                     <CourseDetailBox
                       icon="clock"
-                      title="مدت زمان دوره:"
+                      title=" مدت زمان دوره:"
                       text="19 ساعت"
                     />
                     <CourseDetailBox
@@ -93,19 +112,19 @@ export default function CourseInfo() {
                       text="1401/03/02"
                     />
                     <CourseDetailBox
-                      icon="user-alt"
-                      title="روش پشتیبانی:"
-                      text="آنلاین"
+                      icon="graduation-cap"
+                      title="وضعیت دوره:"
+                      text="به اتمام رسیده"
                     />
                     <CourseDetailBox
-                      icon="info-circle"
-                      title="پیش نیاز:"
-                      text="HTML CSS"
+                      icon="clock"
+                      title=" مدت زمان دوره:"
+                      text="19 ساعت"
                     />
                     <CourseDetailBox
-                      icon="play"
-                      title="نوع مشاهده:"
-                      text="ضبط شده / آنلاین"
+                      icon="calendar-alt"
+                      title="آخرین بروزرسانی:"
+                      text="1401/03/02"
                     />
                   </div>
                 </div>
@@ -130,7 +149,9 @@ export default function CourseInfo() {
                   </div>
                 </div>
                 {/* Finish Course Progress */}
+
                 {/* Start Introduction */}
+
                 <div className="introduction">
                   <div className="introduction__item">
                     <span className="introduction__title title">
@@ -234,7 +255,7 @@ export default function CourseInfo() {
                       </Accordion.Item>
                       <Accordion.Item eventKey="1" className="accordion">
                         <Accordion.Header>
-                          اصطلاحات مقدماتی مربوط به بک اند
+                          اصطلاحات مقدماتی مربوط به بک‌اند
                         </Accordion.Header>
                         <Accordion.Body className="introduction__accordion-body">
                           <div className="introduction__accordion-right">
@@ -298,7 +319,9 @@ export default function CourseInfo() {
                   </div>
                 </div>
                 {/* Finish Introduction */}
+
                 {/* Start Teacher Details */}
+
                 <div className="techer-details">
                   <div className="techer-details__header">
                     <div className="techer-details__header-right">
@@ -327,10 +350,13 @@ export default function CourseInfo() {
                     زمینه وب فعالیت داشته باشم.و..
                   </p>
                 </div>
+
                 {/* Finish Teacher Details */}
+
                 <CommentsTextArea />
               </div>
             </div>
+
             <div className="col-4">
               <div className="courses-info">
                 <div className="course-info">
@@ -453,6 +479,7 @@ export default function CourseInfo() {
           </div>
         </div>
       </main>
+
       <Footer />
     </>
   );
