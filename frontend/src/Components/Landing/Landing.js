@@ -1,16 +1,19 @@
-import "./Landing.css";
+import React, { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
 import LandingCounter from "../LandingCounter/LandingCounter";
 
+import "./Landing.css";
+
 export default function Landing() {
+
   return (
     <section className="landing">
       <div className="container">
         <h1 className="landing__title">
           <Typewriter
-            onInit={(typewriter) => {
-              typewriter
-                .typeString("ما به هر قیمتی دوره آموزشی تولید نمی کنیم !")
+            onInit={(typeWriter) => {
+              typeWriter
+                .typeString("ما به هر قیمتی دوره آموزشی تولید نمی‌کنیم!")
                 .start()
                 .pauseFor(2000)
                 .deleteAll()

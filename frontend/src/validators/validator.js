@@ -1,10 +1,10 @@
-import regex from "./regex";
 import rules from "./rules";
+import regex from "./regex";
 
 const validator = (value, validations) => {
-  console.log("validator=>", value, validations);
 
   let validationResults = [];
+
   for (const validator of validations) {
     if (validator.value === rules.requiredValue) {
       value.trim().length === 0 && validationResults.push(false);
@@ -19,6 +19,7 @@ const validator = (value, validations) => {
       !regex.testEmail(value) && validationResults.push(false);
     }
   }
+
   if (validationResults.length) {
     return false;
   } else {

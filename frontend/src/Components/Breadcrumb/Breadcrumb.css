@@ -1,3 +1,5 @@
+/* Start Breadcrumb Styles */
+
 .breadcrumb {
   margin-bottom: 2rem;
 }
@@ -50,3 +52,5 @@
   font-size: 1.5rem;
   margin: 0 0.7rem;
 }
+
+/* Finish Breadcrumb Styles */

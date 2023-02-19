@@ -1,3 +1,4 @@
+/* ============================== Login-Register Style ============================== */
 .login-register {
   display: flex;
   justify-content: center;
@@ -103,15 +104,17 @@
   margin-top: 0.8rem;
   display: flex;
   align-items: center;
-  background-color: #2bce56;
   position: relative;
 }
+
 .login-form__btn-success {
   background-color: #2bce56;
 }
+
 .login-form__btn-error {
   background-color: red;
 }
+
 .login-form__btn-icon {
   color: var(--white-color);
   font-size: 1.8rem;
@@ -154,14 +157,14 @@
   margin-right: 2rem;
   margin-top: 1rem;
 }
+/* ============================== Login-Register Style ============================== */
+
 
 .swal-footer {
   display: flex;
   justify-content: center;
 }
+
 .recaptcha-parent {
   margin-top: 2rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  justify-content: center;
 }

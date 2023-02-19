@@ -1,7 +1,9 @@
 import React from "react";
 import ArticleBox from "../ArticleBox/ArticleBox";
-import SectionHeader from "../SectionHeader/SectionHeader";
+import SectionHeader from "./../SectionHeader/SectionHeader";
+
 import "./LastArticles.css";
+
 export default function LastArticles() {
   return (
     <section className="articles">
@@ -11,25 +13,23 @@ export default function LastArticles() {
           desc="پیش به سوی ارتقای دانش"
           btnTitle="تمامی مقاله ها"
         />
+
         <div className="articles__content">
           <div className="row">
             <ArticleBox
-              cover="images/blog/3.jpg"
               title="نحوه نصب کتابخانه در پایتون | آموزش نصب کتابخانه پایتون"
-              desc="زبان پایتون هم مانند دیگر زبان­های برنامه نویسی رایج، دارای کتابخانه
-            های مختلفی برای تسریع..."
+              cover="images/blog/3.jpg"
+              desc="زبان پایتون هم مانند دیگر زبان­های برنامه نویسی رایج، دارای کتابخانه های مختلفی برای تسریع..."
             />
             <ArticleBox
-              cover="images/blog/3.jpg"
               title="نحوه نصب کتابخانه در پایتون | آموزش نصب کتابخانه پایتون"
-              desc="زبان پایتون هم مانند دیگر زبان­های برنامه نویسی رایج، دارای کتابخانه
-            های مختلفی برای تسریع..."
+              cover="images/blog/3.jpg"
+              desc="زبان پایتون هم مانند دیگر زبان­های برنامه نویسی رایج، دارای کتابخانه های مختلفی برای تسریع..."
             />
             <ArticleBox
-              cover="images/blog/3.jpg"
               title="نحوه نصب کتابخانه در پایتون | آموزش نصب کتابخانه پایتون"
-              desc="زبان پایتون هم مانند دیگر زبان­های برنامه نویسی رایج، دارای کتابخانه
-            های مختلفی برای تسریع..."
+              cover="images/blog/3.jpg"
+              desc="زبان پایتون هم مانند دیگر زبان­های برنامه نویسی رایج، دارای کتابخانه های مختلفی برای تسریع..."
             />
           </div>
         </div>

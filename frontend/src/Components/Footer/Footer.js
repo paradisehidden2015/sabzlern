@@ -1,6 +1,8 @@
 import React from "react";
 import FooterItem from "../FooterItem/FooterItem";
+
 import "./Footer.css";
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -23,6 +25,7 @@ export default function Footer() {
                 هستند که هوای کاربر های عزیز رو داشته باشند !
               </p>
             </FooterItem>
+
             <FooterItem title="آخرین مطالب">
               <div className="footer-widgets__links">
                 <a href="#" className="footer-widgets__link">
@@ -46,6 +49,7 @@ export default function Footer() {
                 </a>
               </div>
             </FooterItem>
+
             <FooterItem title="دسترسی سریع">
               <div className="row">
                 <div className="col-6">
@@ -86,6 +90,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
       <div className="footer__copyright">
         <span className="footer__copyright-text">
           کلیه حقوق برای آکادمی آموزش برنامه نویسی سبز لرن محفوظ است.

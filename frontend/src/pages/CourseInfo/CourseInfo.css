@@ -37,6 +37,7 @@
   width: 100%;
   border-radius: 1rem;
 }
+
 /* Start Course Progress Styles */
 
 .course-progress {
@@ -73,6 +74,7 @@
 }
 
 /* Finish Course Progress Styles */
+
 /* Start Introduction styles */
 
 .introduction {
@@ -180,13 +182,14 @@
 }
 
 /* Finish Introduction styles */
+
 /* Start Teacher Details Styles */
 
 .techer-details {
   border-radius: 0.5rem;
   padding: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 3.5rem;
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
   box-shadow: 0 0 13px 1px rgba(70, 72, 77, 0.08);
 }
 
@@ -250,6 +253,7 @@
 }
 
 /* Finish Teacher Details Styles */
+
 /* Start Sidebar Styles */
 
 .courses-info {
@@ -303,7 +307,7 @@
   color: #8d8d8d;
   font-weight: bold;
 }
-/* //////////////////////////////////////////////// */
+
 .course-info__register {
   text-align: center;
   background-color: #1fbd50;

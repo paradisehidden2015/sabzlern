@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./LandingCounter.css";
+
 export default function LandingCounter({ count }) {
   const [courseCounter, setCourseCounter] = useState(0);
+
   useEffect(() => {
     let interval = setInterval(() => {
       setCourseCounter((prevCount) => prevCount + 1);

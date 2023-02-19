@@ -2,7 +2,8 @@ import React from "react";
 import Topbar from "./../../Components/Topbar/Topbar";
 import Navbar from "./../../Components/Navbar/Navbar";
 import Footer from "./../../Components/Footer/Footer";
-import Breadcrumb from "../../Components/Breadcrumb/Breadcrumb";
+import Breadcrumb from "./../../Components/Breadcrumb/Breadcrumb";
+
 import "./ArticleInfo.css";
 import CommentsTextArea from "../../Components/CommentsTextArea/CommentsTextArea";
 
@@ -11,21 +12,23 @@ export default function ArticleInfo() {
     <>
       <Topbar />
       <Navbar />
+
       <Breadcrumb
         links={[
-          { id: 1, title: "خانه", to: "/" },
+          { id: 1, title: "خانه", to: "" },
           {
             id: 2,
             title: "مقاله ها",
-            to: "/Category-info/frontend",
+            to: "category-info/frontend",
           },
           {
             id: 3,
-            title: "ویو VS ری اکت",
-            to: "/Course-info/js-expert",
+            title: "ویو Vs ری‌اکت",
+            to: "course-info/js-expert",
           },
         ]}
       />
+
       <main className="main">
         <div className="container">
           <div className="row">
@@ -89,9 +92,7 @@ export default function ArticleInfo() {
                       className="article__score-icon"
                     />
                   </div>
-                  <span className="article__score-text">
-                    4.2/5 - (5 امتیاز)
-                  </span>
+                  <span className="article__score-text">4.2/5 - (5 امتیاز)</span>
                 </div>
 
                 <p className="article__paragraph paragraph">
@@ -108,6 +109,7 @@ export default function ArticleInfo() {
                   برنامه‌نویسی در جهان را به شما معرفی کنیم و در آخر بگوییم که
                   بهترین سایت آموزش جاوا اسکریپت کدام است.
                 </p>
+
                 <div className="article-read">
                   <span className="article-read__title">
                     آنچه در این مقاله خواهید خواند
@@ -130,6 +132,7 @@ export default function ArticleInfo() {
                     </li>
                   </ul>
                 </div>
+
                 <img
                   src="/images/blog/2.jpg"
                   alt="Article Image"
@@ -193,10 +196,9 @@ export default function ArticleInfo() {
                     className="article-section__img"
                   />
                 </div>
+
                 <div className="article-social-media">
-                  <span className="article-social-media__text">
-                    اشتراک گذاری :
-                  </span>
+                  <span className="article-social-media__text">اشتراک گذاری :</span>
                   <a href="#" className="article-social-media__link">
                     <i className="fab fa-telegram-plane article-social-media__icon"></i>
                   </a>
@@ -207,7 +209,9 @@ export default function ArticleInfo() {
                     <i className="fab fa-facebook-f article-social-media__icon"></i>
                   </a>
                 </div>
+
               </div>
+
               <div className="suggestion-articles">
                 <div className="row">
                   <div className="col-6">
@@ -216,8 +220,7 @@ export default function ArticleInfo() {
                         <i className="fas fa-arrow-right suggestion-articles__icon"></i>
                       </a>
                       <a href="#" className="suggestion-articles__link">
-                        سریع ترین و بهترین راه یادگیری جاوا اسکریپت چیست؟ |
-                        تجربه برنامه نویسان
+                        سریع ترین و بهترین راه یادگیری جاوا اسکریپت چیست؟ | تجربه برنامه نویسان
                       </a>
                     </div>
                   </div>
@@ -227,19 +230,21 @@ export default function ArticleInfo() {
                         <i className="fas fa-arrow-left suggestion-articles__icon"></i>
                       </a>
                       <a href="#" className="suggestion-articles__link">
-                        سریع ترین و بهترین راه یادگیری جاوا اسکریپت چیست؟ |
-                        تجربه برنامه نویسان
+                        سریع ترین و بهترین راه یادگیری جاوا اسکریپت چیست؟ | تجربه برنامه نویسان
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
+
               <CommentsTextArea />
+
             </div>
             <div className="col-4"></div>
           </div>
         </div>
       </main>
+
       <Footer />
     </>
   );

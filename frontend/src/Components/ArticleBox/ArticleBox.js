@@ -1,5 +1,7 @@
 import React from "react";
+
 import "./ArticleBox.css";
+
 export default function ArticleBox({ title, desc, cover }) {
   return (
     <div className="col-4">
@@ -18,7 +20,7 @@ export default function ArticleBox({ title, desc, cover }) {
             {title}
           </a>
           <p className="article-card__text">
-            {desc}
+            {desc}  
           </p>
           <a href="#" className="article-card__btn">
             بیشتر بخوانید

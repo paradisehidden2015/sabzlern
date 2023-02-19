@@ -1,3 +1,5 @@
+/* Start Courses Pagination Styles */
+
 .courses-pagination {
   margin: 3rem 0;
 }
@@ -29,3 +31,5 @@
   color: var(--white-color);
   background-color: var(--primary-color);
 }
+
+/* Finish Courses Pagination Styles */

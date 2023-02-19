@@ -1,3 +1,5 @@
+/* Start Article Details Styles */
+
 .article {
   padding: 2.4rem;
   border-radius: 0.5rem;
@@ -35,6 +37,7 @@
 .article__banner {
   margin-top: 4rem;
 }
+
 .article__score {
   display: flex;
   align-items: center;

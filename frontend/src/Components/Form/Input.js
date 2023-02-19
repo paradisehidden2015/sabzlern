@@ -1,6 +1,8 @@
 import React, { useEffect, useReducer } from "react";
 import validator from "../../validators/validator";
+
 import "./Input.css";
+
 const inputReducer = (state, action) => {
   switch (action.type) {
     case "CHANGE": {
@@ -15,6 +17,7 @@ const inputReducer = (state, action) => {
     }
   }
 };
+
 export default function Input(props) {
   const [mainInput, dispatch] = useReducer(inputReducer, {
     value: "",
@@ -23,18 +26,21 @@ export default function Input(props) {
 
   const { value, isValid } = mainInput;
   const { id, onInputHandler } = props;
+
   useEffect(() => {
     onInputHandler(id, value, isValid);
   }, [value]);
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (event) => {
+    console.log(event.target.value);
     dispatch({
       type: "CHANGE",
-      value: e.target.value,
+      value: event.target.value,
       validations: props.validations,
       isValid: true,
     });
   };
+
   const element =
     props.element === "input" ? (
       <input
@@ -43,16 +49,19 @@ export default function Input(props) {
         className={`${props.className} ${
           mainInput.isValid ? "success" : "error"
         }`}
-        onChange={onChangeHandler}
         value={mainInput.value}
+        onChange={onChangeHandler}
       />
     ) : (
       <textarea
         placeholder={props.placeholder}
-        className={props.className}
+        className={`${props.className} ${
+          mainInput.isValid ? "success" : "error"
+        }`}
         onChange={onChangeHandler}
         value={mainInput.value}
       />
     );
+
   return <div>{element}</div>;
 }

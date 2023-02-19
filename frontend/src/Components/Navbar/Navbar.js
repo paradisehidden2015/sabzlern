@@ -1,7 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext";
+
 import "./Navbar.css";
+
 export default function Navbar() {
   const [allMenus, setAllMenus] = useState([]);
   const authContext = useContext(AuthContext);
@@ -9,7 +11,9 @@ export default function Navbar() {
   useEffect(() => {
     fetch(`http://localhost:4000/v1/menus`)
       .then((res) => res.json())
-      .then((menus) => setAllMenus(menus));
+      .then((menus) => {
+        setAllMenus(menus);
+      });
   }, []);
 
   return (
@@ -25,10 +29,11 @@ export default function Navbar() {
 
             <ul className="main-header__menu">
               <li className="main-header__item">
-                <Link to="/" className="main-header__link">
+                <a href="#" className="main-header__link">
                   صفحه اصلی
-                </Link>
+                </a>
               </li>
+
               {allMenus.map((menu) => (
                 <li className="main-header__item">
                   <Link to={menu.href} className="main-header__link">
@@ -53,6 +58,13 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
+
+              {/* <li className="main-header__item">
+                <a href="#" className="main-header__link">
+                  فرانت اند
+                  
+                </a>
+              </li> */}
             </ul>
           </div>
 
@@ -63,6 +75,7 @@ export default function Navbar() {
             <a href="#" className="main-header__cart-btn">
               <i className="fas fa-shopping-cart main-header__cart-icon"></i>
             </a>
+
             {authContext.isLoggedIn ? (
               <Link to="#" className="main-header__profile">
                 <span className="main-header__profile-text">

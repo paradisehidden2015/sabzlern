@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 export default function Button(props) {
   if (props.to) {
     return (
@@ -9,7 +10,7 @@ export default function Button(props) {
     );
   } else if (props.href) {
     return (
-      <a to={props.href} className={props.className}>
+      <a href={props.href} className={props.className}>
         {props.children}
       </a>
     );
