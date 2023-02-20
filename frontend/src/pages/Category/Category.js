@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 
 export default function Category() {
   const [courses, setCourses] = useState([]);
+  const [shownCourses, setShownCourses] = useState([]);
   const { categoryName } = useParams();
 
   useEffect(() => {
@@ -19,7 +20,7 @@ export default function Category() {
         console.log(allCourses);
         setCourses(allCourses);
       });
-  }, []);
+  }, [categoryName]);
 
   return (
     <>
@@ -85,10 +86,15 @@ export default function Category() {
                         </form>
                       </div>
                     </div>
-                    {courses.map((course) => (
+                    {shownCourses.map((course) => (
                       <CourseBox {...course} />
                     ))}
-                    <Pagination />
+                    <Pagination
+                      items={courses}
+                      itemsCount={1}
+                      pathname={`/category-info/${categoryName}`}
+                      setShownCourses={setShownCourses}
+                    />
                   </>
                 )}
               </div>
