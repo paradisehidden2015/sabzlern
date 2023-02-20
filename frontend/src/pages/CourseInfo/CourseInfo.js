@@ -7,7 +7,7 @@ import CourseDetailBox from "../../Components/CourseDetailBox/CourseDetailBox";
 import CommentsTextArea from "../../Components/CommentsTextArea/CommentsTextArea";
 import Accordion from "react-bootstrap/Accordion";
 import { useParams } from "react-router-dom";
-import swal from 'sweetalert'
+import swal from "sweetalert";
 
 import "./CourseInfo.css";
 
@@ -17,6 +17,7 @@ export default function CourseInfo() {
   const [createdAt, setCreatedAt] = useState("");
   const [updatedAt, setUpdatedAt] = useState("");
   const [courseDetails, setCourseDetails] = useState({});
+  const [courseTeacher, setCourseTeacher] = useState({});
 
   const { courseName } = useParams();
 
@@ -38,6 +39,7 @@ export default function CourseInfo() {
         setCourseDetails(courseInfo);
         setCreatedAt(courseInfo.createdAt);
         setUpdatedAt(courseInfo.updatedAt);
+        setCourseTeacher(courseInfo.creator);
         console.log(courseInfo);
       });
   }, []);
@@ -59,10 +61,10 @@ export default function CourseInfo() {
       .then((res) => res.json())
       .then((result) => {
         swal({
-          title: 'کامنت موردنظر با موفقیت ثبت شد',
-          icon: 'success',
-          buttons: 'تایید'
-        })
+          title: "کامنت موردنظر با موفقیت ثبت شد",
+          icon: "success",
+          buttons: "تایید",
+        });
       });
   };
 
@@ -287,22 +289,24 @@ export default function CourseInfo() {
                   <div className="techer-details__header">
                     <div className="techer-details__header-right">
                       <img
-                        src="/images/info/teacher.jfif"
+                        // src={courseTeacher.profile}
                         alt="Teacher Profile"
                         className="techer-details__header-img"
                       />
                       <div className="techer-details__header-titles">
                         <a href="#" className="techer-details__header-link">
-                          محمدامین سعیدی راد
+                          {/* {courseTeacher.name} */}
                         </a>
                         <span className="techer-details__header-skill">
-                          Front End & Back End Developer
+                          {/* {courseTeacher.task} */}
                         </span>
                       </div>
                     </div>
                     <div className="techer-details__header-left">
                       <i className="fas fa-chalkboard-teacher techer-details__header-icon"></i>
-                      <span className="techer-details__header-name">مدرس</span>
+                      <span className="techer-details__header-name">
+                        {/* {courseTeacher.role === "ADMIN" ? "مدیر" : "کاربر"} */}
+                      </span>
                     </div>
                   </div>
                   <p className="techer-details__footer">
