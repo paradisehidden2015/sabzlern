@@ -7,7 +7,7 @@ import CourseDetailBox from "../../Components/CourseDetailBox/CourseDetailBox";
 import CommentsTextArea from "../../Components/CommentsTextArea/CommentsTextArea";
 import Accordion from "react-bootstrap/Accordion";
 import { useParams } from "react-router-dom";
-import swal from "sweetalert";
+import swal from 'sweetalert'
 
 import "./CourseInfo.css";
 
@@ -22,6 +22,7 @@ export default function CourseInfo() {
 
   useEffect(() => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
+
     fetch(`http://localhost:4000/v1/courses/${courseName}`, {
       method: "POST",
       headers: {
@@ -43,6 +44,7 @@ export default function CourseInfo() {
 
   const submitComment = (newCommentBody) => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
+
     fetch(`http://localhost:4000/v1/comments`, {
       method: "POST",
       headers: {
@@ -50,17 +52,17 @@ export default function CourseInfo() {
         Authorization: `Bearer ${localStorageData.token}`,
       },
       body: JSON.stringify({
-        body: { newCommentBody },
-        courseShortName: { courseName },
+        body: newCommentBody,
+        courseShortName: courseName,
       }),
     })
       .then((res) => res.json())
       .then((result) => {
         swal({
-          title: "کامنت موردنظر با موفقیت ثبت شد",
-          icon: "success",
-          buttons: "تایید",
-        });
+          title: 'کامنت موردنظر با موفقیت ثبت شد',
+          icon: 'success',
+          buttons: 'تایید'
+        })
       });
   };
 

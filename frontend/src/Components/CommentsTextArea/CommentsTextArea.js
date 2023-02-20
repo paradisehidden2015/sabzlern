@@ -7,8 +7,9 @@ import "./CommentsTextArea.css";
 export default function CommentsTextArea({ comments, submitComment }) {
   const [newCommentBody, setNewCommentBody] = useState("");
   const authContext = useContext(AuthContext);
-  const onChangeHandler = (e) => {
-    setNewCommentBody(e.target.value);
+
+  const onChangeHandler = (event) => {
+    setNewCommentBody(event.target.value);
   };
 
   return (
@@ -90,6 +91,7 @@ export default function CommentsTextArea({ comments, submitComment }) {
           </>
         )}
       </div>
+
       {authContext.isLoggedIn === true ? (
         <>
           <div class="comments__rules">

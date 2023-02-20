@@ -28,10 +28,7 @@ export default function CourseBox(props) {
           {!isImgShow && <CircleSpinner />}
         </Link>
         <div className="course-box__main">
-          <Link
-            to={`/course-info/${props.shortName}`}
-            className="course-box__title"
-          >
+          <Link to={`/course-info/${props.shortName}`} className="course-box__title">
             {props.name}
           </Link>
 
@@ -77,7 +74,9 @@ export default function CourseBox(props) {
               <span className="course-box__users-text">500</span>
             </div>
             <span className="course-box__price">
-              {/* {props.price === 0 ? "رایگان" : props.price.toLocaleString()} */}
+              {
+                // props.price === 0 ? 'رایگان' : props.price.toLocaleString()
+              }
             </span>
           </div>
         </div>
