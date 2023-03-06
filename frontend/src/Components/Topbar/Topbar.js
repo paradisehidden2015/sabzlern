@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./Topbar.css";
 
-export default function Topbar() {
+export default memo(function Topbar() {
   const [allTopbarLinks, setAllTopbarLinks] = useState([]);
 
   useEffect(() => {
@@ -50,4 +50,4 @@ export default function Topbar() {
       </div>
     </div>
   );
-}
+})

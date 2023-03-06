@@ -31,14 +31,14 @@ export default function Pagination({
             <li className="courses__pagination-item">
               {index + 1 === Number(page) ? (
                 <Link
-                  to={`/${pathname}/${index + 1}`}
+                  to={`${pathname}/${index + 1}`}
                   className="courses__pagination-link courses__pagination-link--active"
                 >
                   {index + 1}
                 </Link>
               ) : (
                 <Link
-                  to={`/${pathname}/${index + 1}`}
+                  to={`${pathname}/${index + 1}`}
                   className="courses__pagination-link"
                 >
                   {index + 1}

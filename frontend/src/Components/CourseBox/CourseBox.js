@@ -14,7 +14,7 @@ export default function CourseBox(props) {
   };
 
   return (
-    <div className="col-4">
+    <div className="col-4" style={{width: `${props.isSlider && '100%'}`}}>
       <div className="course-box">
         <Link to={`/course-info/${props.shortName}`}>
           <img
@@ -75,7 +75,7 @@ export default function CourseBox(props) {
             </div>
             <span className="course-box__price">
               {
-                // props.price === 0 ? 'رایگان' : props.price.toLocaleString()
+                props.price === 0 ? 'رایگان' : props.price.toLocaleString()
               }
             </span>
           </div>
